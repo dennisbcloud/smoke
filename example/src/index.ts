@@ -18,21 +18,8 @@ const app = createServer({
   },
   proxyOpts: {
     target: 'https://staging.cloudinary.com',
-    // target: 'https://0.0.0.0:8081',
     changeOrigin: true,
     secure: false,
-    router: function (req) {
-      if(req.headers.host.includes('folders/folder')){
-        console.log(req.headers.host)
-        console.log('*************************')
-        return 'https://api-staging.cloudinary.com';
-      }
-    },
-
-    // router:{
-    //   "api-localhost:3001" : 'https://api-staging.cloudinary.com',
-    //   "api-mock.cloudinary.com" : 'https://api-staging.cloudinary.com'
-    // }
   }
 })
 
